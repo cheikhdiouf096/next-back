@@ -1,16 +1,22 @@
-import express from "express";
-import { signin, signup, google, signOut } from "../controllers/auth.controller.js";
-
-// const router = express.Router();
-
-// router.post("/signup", signup);
-// router.post("/signin", signin);
-// router.post("/google", google);
-// router.get('/signout', signOut);
-
-// export default router;
+const express = require("express");
+const { registerUser, loginUser, getUserById } = require("../controllers/auth.controller.js");
 
 
-export const signup = async (req, res) =>{
-    req.body
-}
+
+const router = express.Router();
+
+
+router.post("/inscription", registerUser);
+router.post("/connexion", loginUser);
+router.get("/user/:id", getUserById);
+
+
+module.exports = router;
+
+
+
+
+
+
+
+

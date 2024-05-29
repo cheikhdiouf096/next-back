@@ -1,4 +1,7 @@
 const Hotel = require("../models/hotel.model");
+const expressHandler = require("express-async-handler");
+const { updImage } = require("./imageController");
+require("../models/image.model");
 
 const getHotels = async (req, res) => {
   try {
@@ -21,7 +24,8 @@ const getHotel = async (req, res) => {
 
 const createHotel = async (req, res) => {
   try {
-    const hotel = await Hotel.create(req.body);
+    await createImage();
+    const hotel = await Hotel.create(req.body); 
     res.status(200).json(hotel);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -31,7 +35,7 @@ const createHotel = async (req, res) => {
 const updateHotel = async (req, res) => {
   try {
     const { id } = req.params;
-
+    await updImage();
     const hotel = await Hotel.findByIdAndUpdate(id, req.body);
 
     if (!hotel) {

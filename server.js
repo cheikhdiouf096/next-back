@@ -1,16 +1,19 @@
 const express =  require('express');
 const mongoose = require('mongoose');
 const cors = require("cors");
+
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const bodyParser = require('body-parser');
+
 const Hotel = require('./models/hotel.model.js');
 const hotelRoute= require('./routes/hotel.routes.js');
 const userRouter = require('./routes/user.routes.js');
 const imagesRoutes = require('./routes/imagesRoutes.js');
 
-// import userRouter from "./routes/user.routes.js";
-// import authRouter from "./routes/auth.route.js";
 
 const app = express();
-
+app.use(bodyParser.json());
 app.use(cors());
 
 //api card
@@ -27,15 +30,6 @@ app.use(express.urlencoded({extended: false}))
 
 //routes 
 app.use("/api/hotels", hotelRoute);
-
-
-app.use("api/hotels", imagesRoutes);
-
-
-
-
-
-
 
 
 

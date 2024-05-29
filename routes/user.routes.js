@@ -1,11 +1,24 @@
-// import express from "express";
-const express = require("express");
-const  test  = require("../controllers/user.controller") ;
+const mongoose = require('mongoose')
 
 
-const router = express.Router(); 
+const userSchema = mongoose.Schema(
+  {
+    fullName: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 
-router.get("/test", test)
 
- 
-module.exports = router; 
+module.exports = mongoose.model('User', userSchema)
+
