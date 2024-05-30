@@ -38,8 +38,8 @@ mongoose.connect('mongodb+srv://DIOUF096:lqcdu5565o59YxG@backenddb.fk4wlii.mongo
   .then(() => {
     console.log("Database Connected!");
 
-    app.listen(8080, () =>{
-        console.log('server in running on port 8080');
+    app.listen(8000, () =>{
+        console.log('server in running on port 8000');
     })
 })
   .catch(() =>{
